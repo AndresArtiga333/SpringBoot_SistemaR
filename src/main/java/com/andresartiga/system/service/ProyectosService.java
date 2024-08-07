@@ -20,8 +20,8 @@ private ProyectosRepository proyectosRepository;
 
     @Override
     public Proyectos buscarProyecto(Integer idProyecto) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'buscarProyecto'");
+        Proyectos proyectos = proyectosRepository.findById(idProyecto).orElse(null);
+        return proyectos; 
     }
 
     @Override
