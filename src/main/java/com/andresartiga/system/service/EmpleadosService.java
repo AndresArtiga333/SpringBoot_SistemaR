@@ -21,8 +21,8 @@ private EmpleadosRepository empleadosRepository;
 
     @Override
     public Empleados buscarEmpleado(Integer idEmpleado) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'buscarEmpleado'");
+        Empleados empleados = empleadosRepository.findById(idEmpleado).orElse(null);
+        return empleados;
     }
 
     @Override
