@@ -31,9 +31,8 @@ private EmpleadosRepository empleadosRepository;
     }
 
     @Override
-    public void eliminarEmpleado(Integer idEmpleados) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'eliminarEmpleado'");
+    public void eliminarEmpleado(Empleados empleados) {
+        empleadosRepository.delete(empleados);
     }
 
 
