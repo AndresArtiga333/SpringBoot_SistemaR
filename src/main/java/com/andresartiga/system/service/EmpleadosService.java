@@ -27,8 +27,7 @@ private EmpleadosRepository empleadosRepository;
 
     @Override
     public Empleados guardarEmpleado(Empleados empleados) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'guardarEmpleado'");
+    return empleadosRepository.save(empleados);
     }
 
     @Override
