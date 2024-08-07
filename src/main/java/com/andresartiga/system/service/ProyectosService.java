@@ -31,8 +31,8 @@ private ProyectosRepository proyectosRepository;
 
     @Override
     public void eliminarProyecto(Proyectos proyectos) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'eliminarProyecto'");
+         proyectosRepository.delete(proyectos);
+
     }
 
 
