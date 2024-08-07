@@ -26,8 +26,7 @@ private ProyectosRepository proyectosRepository;
 
     @Override
     public Proyectos guardarProyecto(Proyectos proyectos) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'guardarProyecto'");
+        return proyectosRepository.save(proyectos);
     }
 
     @Override
