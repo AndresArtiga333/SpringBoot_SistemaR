@@ -54,5 +54,18 @@ public class ProyectosController {
         return ResponseEntity.ok(proyectos);
     }
     
-
+    @PutMapping("/proyectos/{idProyecto}")
+    public ResponseEntity <Proyectos> editarProyecto(@PathVariable Integer idProyecto, @RequestBody Proyectos proyectoRecibido){
+        Proyectos proyectos = IProyectosService.buscarProyecto(idProyecto);
+        if(proyectos == null){
+            throw new ProyectoException("No se encontro el proyecto");
+        }
+        proyectos.setCosto(proyectoRecibido.getCosto());
+        proyectos.setDescripcion(proyectoRecibido.getDescripcion());
+        proyectos.setFechaDeFinalizacion(proyectoRecibido.getFechaDeFinalizacion());
+        proyectos.setFechaDeInicio(proyectoRecibido.getFechaDeInicio());
+        proyectos.setNombreProyecto(proyectoRecibido.getNombreProyecto());
+        IProyectosService.guardarProyecto(proyectos);
+        return ResponseEntity.ok(proyectos);
+    }
 }
