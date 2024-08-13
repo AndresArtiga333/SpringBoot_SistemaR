@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import com.andresartiga.system.bean.Empleados;
 import com.andresartiga.system.service.IEmpleadosService;
 
-@RestController //http://localhost:8081/rh-empleados
+@RestController //http://localhost:8081/rh-empleado
 @RequestMapping ("rh-empleado")
 
 public class EmpleadoController {
@@ -23,7 +23,7 @@ public class EmpleadoController {
 
     @Autowired /*Comunicacion entre el service y el repositorio */
     private IEmpleadosService IEmpleadosService;
-        //http://localhost:8081/rh-empleados
+        //http://localhost:8081/rh-empleado/empleados
     @GetMapping("/empleados")
 
     public List<Empleados> obtenerEmpleado(){
