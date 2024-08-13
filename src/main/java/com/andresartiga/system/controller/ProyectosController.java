@@ -2,10 +2,13 @@ package com.andresartiga.system.controller;
 
 import java.util.List;
 
+import java.util.HashMap;
+import java.util.Map;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -67,5 +70,19 @@ public class ProyectosController {
         proyectos.setNombreProyecto(proyectoRecibido.getNombreProyecto());
         IProyectosService.guardarProyecto(proyectos);
         return ResponseEntity.ok(proyectos);
+    }
+
+        @DeleteMapping("/proyectos/{idProyecto}")
+    public ResponseEntity<Map<String, Boolean>> eliminarProyecto(@PathVariable Integer idProyecto){
+        Proyectos proyectos = IProyectosService.buscarProyecto(idProyecto);
+        if (proyectos == null){
+            throw new ProyectoException("No se encontro el proyecto a eliminar");
+        }
+        IProyectosService.eliminarProyecto(proyectos);
+
+        Map<String , Boolean> respuesta = new HashMap<>(); 
+        respuesta.put("Eliminado", true);
+        return ResponseEntity.ok(respuesta);
+        
     }
 }
