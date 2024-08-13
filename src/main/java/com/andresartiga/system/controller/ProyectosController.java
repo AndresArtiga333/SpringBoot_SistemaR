@@ -9,12 +9,15 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.andresartiga.system.bean.Empleados;
 import com.andresartiga.system.bean.Proyectos;
+import com.andresartiga.system.exception.EmpleadoException;
+import com.andresartiga.system.exception.ProyectoException;
 import com.andresartiga.system.service.IEmpleadosService;
 import com.andresartiga.system.service.IProyectosService;
 
@@ -40,7 +43,16 @@ public class ProyectosController {
         return IProyectosService.guardarProyecto(proyectos);
 
     }
-
-
     
+    @GetMapping("/proyectos/{idProyecto}")
+
+    public ResponseEntity <Proyectos> buscarProyecto(@PathVariable Integer idProyecto){
+        Proyectos proyectos = IProyectosService.buscarProyecto(idProyecto);
+        if(proyectos ==null){
+            throw new ProyectoException("No se encontro el proyecto");
+        }
+        return ResponseEntity.ok(proyectos);
+    }
+    
+
 }
