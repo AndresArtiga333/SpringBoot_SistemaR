@@ -54,9 +54,9 @@ public class EmpleadoController {
         return ResponseEntity.ok(empleados);
     }
 
-    /*@PutMapping("/empleado?{id}")
-    public ResponseEntity <Empleados> editarEmpleado(@PathVariable Integer id, @RequestBody Empleados empleadoRecibido){
-        Empleados empleados = IEmpleadosService.buscarEmpleado(id);
+    @PutMapping("/empleado/{idEmpleado}")
+    public ResponseEntity <Empleados> editarEmpleado(@PathVariable Integer idEmpleado, @RequestBody Empleados empleadoRecibido){
+        Empleados empleados = IEmpleadosService.buscarEmpleado(idEmpleado);
         if(empleados == null){
             throw new EmpleadoException("El id no existe");
         }
@@ -64,6 +64,7 @@ public class EmpleadoController {
         empleados.setNombreCompleto(empleadoRecibido.nombreCompleto);
         empleados.setPuesto(empleadoRecibido.getPuesto());
         empleados.setSalario(empleadoRecibido.getSalario());
+        IEmpleadosService.guardarEmpleado(empleados);
         return ResponseEntity.ok(empleados);
-    }*/
+    }
 }
